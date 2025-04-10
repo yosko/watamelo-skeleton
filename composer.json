@@ -1,0 +1,25 @@
+{
+    "name": "yosko/watamelo-skeleton",
+    "description": "A skeleton to start a new project based on Watamelo framework",
+    "type": "project",
+    "require": {
+        "yosko/watamelo": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "App\\": "src/"
+        }
+    },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "git@github.com:yosko/watamelo.git"
+        }
+    ],
+    "scripts": {
+        "post-create-project-cmd": [
+            "@php setup.php %PROJECT_ROOT%",
+            "composer dump-autoload"
+        ]
+    }
+}
