@@ -19,7 +19,7 @@ function replaceIfFileExists(string $path, callable $replaceFunction): void
 }
 
 
-$projectName = $argv[1] ?? basename(getcwd());
+$projectName = basename(getcwd()) ?? basename(getcwd());
 $baseNamespace = studlyCaps($projectName);
 echo "Changing namespace 'App' to '{$baseNamespace}' in files:\n";
 
