@@ -2,6 +2,7 @@
     "name": "yosko/watamelo-skeleton",
     "description": "A skeleton to start a new project based on Watamelo framework",
     "type": "project",
+    "license": "LGPL",
     "require": {
         "yosko/watamelo": "dev-master"
     },
@@ -18,7 +19,7 @@
     ],
     "scripts": {
         "post-create-project-cmd": [
-            "@php setup.php %PROJECT_ROOT%",
+            "@php setup.php",
             "composer dump-autoload"
         ]
     }
