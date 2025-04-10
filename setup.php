@@ -41,7 +41,7 @@ replaceIfFileExists(__DIR__ . '/composer.json', function ($content) use ($baseNa
 
     // cleaning composer.json so that developpers start with a basic composer.json
     unset($composerJson['scripts']);
-    $composerJson['name'] = '';
+    $composerJson['name'] = $baseNamespace;
     $composerJson['description'] = '';
     $composerJson['type'] = 'app';
     $composerJson['license'] = '';
