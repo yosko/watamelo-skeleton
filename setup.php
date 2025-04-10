@@ -41,10 +41,10 @@ replaceIfFileExists('composer.json', function ($content) use ($baseNamespace) {
 
     // cleaning composer.json so that developpers start with a basic composer.json
     unset($composerJson['scripts']);
-    $composerJson['name'] = $baseNamespace;
-    $composerJson['description'] = '';
+    unset($composerJson['name']);
+    unset($composerJson['description']);
     $composerJson['type'] = 'app';
-    $composerJson['license'] = '';
+    unset($composerJson['license']);
 
     return json_encode($composerJson, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 });
