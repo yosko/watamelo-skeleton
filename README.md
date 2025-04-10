@@ -17,4 +17,4 @@ The app name (`skel-test`) will be used:
 
 When declaring a route, it can be either a pair of a class/instance and the name of one of its nonstatic methods. Either:
 - instance of a class (`object`): the method will be called on this object.
-- name of a class (`string`: use `MyClass::classname`): an object will be created and then the method will be called.
+- name of a class (`string`: use `MyClass::class`): an object will be created and then the method will be called.
