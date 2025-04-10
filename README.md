@@ -5,7 +5,7 @@ A skelaton used to start a new project based on the Watamelo framework.
 
 Simplest way: create a new project based on this package:
 ```
-composer create-project yosko/watamelo-skeleton skel-test dev-main \
+composer create-project yosko/watamelo-skeleton skel-test \
   --repository='{"type": "git", "url": "git@github.com:yosko/watamelo-skeleton"}'
 ```
 
