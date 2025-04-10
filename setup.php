@@ -39,8 +39,12 @@ replaceIfFileExists(__DIR__ . '/composer.json', function ($content) use ($baseNa
     unset($composerJson['autoload']['psr-4']['App\\']);
     $composerJson['autoload']['psr-4']["{$baseNamespace}\\"] = "src/";
 
-    // remove project creation script so that developpers start with a basic composer.json
-    unset($composerJson['scripts']['post-update-cmd']);
+    // cleaning composer.json so that developpers start with a basic composer.json
+    unset($composerJson['scripts']);
+    $composerJson['name'] = '';
+    $composerJson['description'] = '';
+    $composerJson['type'] = 'app';
+    $composerJson['license'] = '';
 
     return json_encode($composerJson, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 });
