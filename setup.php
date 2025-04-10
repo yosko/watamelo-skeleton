@@ -24,17 +24,17 @@ $baseNamespace = studlyCaps($projectName);
 echo "Changing namespace 'App' to '{$baseNamespace}' in files:\n";
 
 // rename base namespace in app class
-replaceIfFileExists(__DIR__ . '/src/Application.php', function ($content) use ($baseNamespace) {
+replaceIfFileExists('src/Application.php', function ($content) use ($baseNamespace) {
     return preg_replace('/^namespace\s+App;$/m', "namespace {$baseNamespace};", $content);
 });
 
 // rename base namespace in index
-replaceIfFileExists(__DIR__ . '/public/index.php', function ($content) use ($baseNamespace) {
+replaceIfFileExists('public/index.php', function ($content) use ($baseNamespace) {
     return str_replace('\\App\\Application', "\\{$baseNamespace}\\Application", $content);
 });
 
 // update base namespace for PSR-4 autoloading in composer.json
-replaceIfFileExists(__DIR__ . '/composer.json', function ($content) use ($baseNamespace) {
+replaceIfFileExists('composer.json', function ($content) use ($baseNamespace) {
     $composerJson = json_decode($content, true);
     unset($composerJson['autoload']['psr-4']['App\\']);
     $composerJson['autoload']['psr-4']["{$baseNamespace}\\"] = "src/";
@@ -49,13 +49,10 @@ replaceIfFileExists(__DIR__ . '/composer.json', function ($content) use ($baseNa
     return json_encode($composerJson, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
 });
 
-// remove composer.lock in .gitignore
-replaceIfFileExists(__DIR__ . '/src/Application.php', function ($content) use ($baseNamespace) {
-    return preg_replace('/^namespace\s+App;$/m', "namespace {$baseNamespace};", $content);
-});
-
 // remove this setup script
-unlink(__FILE__);
+$setup = basename(__FILE__);
+unlink($setup);
+echo " ✔ {$setup} deleted\n";
 
 echo "\n Setup finalized!\n";
 // next: composer dump-autoload
