@@ -8,9 +8,10 @@ Simplest way: create a new project based on this package:
 composer create-project yosko/watamelo-skeleton skel-test dev-main \
   --repository='{"type": "git", "url": "git@github.com:yosko/watamelo-skeleton"}'
 ```
-*(you could also just copy/clone the repo then `composer install`)*
 
-The app name will be used as the main (root) namespace for classes (`src/App.php` will be `\MyProject\App`).
+The app name (`skel-test`) will be used:
+1. as the subdirectory for your code.
+2. as the main (root) namespace for classes (`src/App.php` will be `\SkelTest\App`).
 
 ## Route callback
 
