@@ -13,7 +13,7 @@ class Application extends AbstractApplication
         $router->mapDefault($this, 'error404');
         $router->get('/', $this, 'index');
 
-        // instead of an instance ($this), you can use a class name
+        // instead of an instance ($this), you can use a class name (ex: MyController::class)
     }
 
     public function execute(Router $router)
