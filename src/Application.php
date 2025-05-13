@@ -2,8 +2,8 @@
 
 namespace App;
 
-use Yosko\Watamelo\AbstractApplication;
-use Yosko\Watamelo\Router;
+use Watamelo\Framework\AbstractApplication;
+use Watamelo\Framework\Http\Router\Router;
 
 class Application extends AbstractApplication
 {
