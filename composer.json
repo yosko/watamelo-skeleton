@@ -11,12 +11,6 @@
             "App\\": "src/"
         }
     },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "git@github.com:yosko/watamelo.git"
-        }
-    ],
     "scripts": {
         "post-create-project-cmd": [
             "@php setup.php",
