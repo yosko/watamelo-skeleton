@@ -1,4 +1,7 @@
 # Watamelo Skeleton
+[![Latest Stable Version](https://img.shields.io/packagist/v/yosko/watamelo-skeleton.svg)](https://packagist.org/packages/yosko/watamelo-skeleton)
+[![License](https://img.shields.io/packagist/l/yosko/watamelo-skeleton.svg)](https://packagist.org/packages/yosko/watamelo-skeleton)
+
 A skeleton used to start a new project based on the Watamelo framework.
 
 ## How to use
