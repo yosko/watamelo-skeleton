@@ -2,7 +2,7 @@
     "name": "yosko/watamelo-skeleton",
     "description": "A skeleton to start a new project based on Watamelo framework",
     "type": "project",
-    "license": "LGPL",
+    "license": "LGPL-3.0-or-later",
     "require": {
         "yosko/watamelo": "dev-master"
     },
