@@ -4,7 +4,7 @@
     "type": "project",
     "license": "LGPL",
     "require": {
-        "yosko/watamelo": "^1.1"
+        "yosko/watamelo": "dev-master"
     },
     "autoload": {
         "psr-4": {
