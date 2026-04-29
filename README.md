@@ -8,7 +8,7 @@ A skeleton used to start a new project based on the Watamelo framework.
 
 Simplest way: create a new project based on this package:
 ```
-composer create-project yosko/watamelo-skeleton skel-test
+composer create-project yosko/watamelo-skeleton skel-test --remove-vcs
 ```
 
 The app name (`skel-test`) will be used:
