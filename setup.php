@@ -19,7 +19,7 @@ function replaceIfFileExists(string $path, callable $replaceFunction): void
 }
 
 
-$projectName = basename(getcwd()) ?? basename(getcwd());
+$projectName = basename(getcwd());
 $baseNamespace = studlyCaps($projectName);
 echo "Changing namespace 'App' to '{$baseNamespace}' in files:\n";
 
@@ -47,6 +47,14 @@ replaceIfFileExists('composer.json', function ($content) use ($baseNamespace) {
     unset($composerJson['license']);
 
     return json_encode($composerJson, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES);
+});
+
+// clean up .gitignore for the final project
+replaceIfFileExists('.gitignore', function ($content) {
+    // remove submodule exception and restore standard vendor ignore
+    $content = preg_replace('/!\/vendor\/yosko\/watamelo\/?\n?/', '', $content);
+    $content = str_replace('/vendor/*', '/vendor/', $content);
+    return $content;
 });
 
 // remove this setup script

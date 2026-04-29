@@ -1,5 +1,5 @@
 # Watamelo Skeleton
-A skelaton used to start a new project based on the Watamelo framework.
+A skeleton used to start a new project based on the Watamelo framework.
 
 ## How to use
 
@@ -11,7 +11,7 @@ composer create-project yosko/watamelo-skeleton skel-test \
 
 The app name (`skel-test`) will be used:
 1. as the subdirectory for your code.
-2. as the main (root) namespace for classes (`src/App.php` will be `\SkelTest\App`).
+2. as the main (root) namespace for classes (`src/Application.php` will be `\SkelTest\Application`).
 
 ## Route callback
 
