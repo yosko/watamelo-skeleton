@@ -11,9 +11,15 @@ Simplest way: create a new project based on this package:
 composer create-project yosko/watamelo-skeleton skel-test --remove-vcs
 ```
 
-The app name (`skel-test`) will be used:
-1. as the subdirectory for your code.
-2. as the main (root) namespace for classes (`src/Application.php` will be `\SkelTest\Application`).
+By default, your project will use the `App` namespace.
+
+### Custom Namespace
+
+You can replace the default namespace by setting the `APP_NAMESPACE` environment variable:
+
+```bash
+APP_NAMESPACE=MyProject composer create-project yosko/watamelo-skeleton my-project --remove-vcs
+```
 
 ## Route callback
 

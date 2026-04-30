@@ -19,27 +19,34 @@ function replaceIfFileExists(string $path, callable $replaceFunction): void
 }
 
 
-$projectName = basename(getcwd());
-$baseNamespace = studlyCaps($projectName);
-echo "Changing namespace 'App' to '{$baseNamespace}' in files:\n";
+$baseNamespaceEnv = getenv('APP_NAMESPACE');
 
-// rename base namespace in app class
-replaceIfFileExists('src/Application.php', function ($content) use ($baseNamespace) {
-    return preg_replace('/^namespace\s+App;$/m', "namespace {$baseNamespace};", $content);
-});
+if (!empty($baseNamespaceEnv)) {
+    $baseNamespace = studlyCaps($baseNamespaceEnv);
+    echo "Changing namespace 'App' to '{$baseNamespace}' in files:\n";
 
-// rename base namespace in index
-replaceIfFileExists('public/index.php', function ($content) use ($baseNamespace) {
-    return str_replace('\\App\\Application', "\\{$baseNamespace}\\Application", $content);
-});
+    // rename base namespace in app class
+    replaceIfFileExists('src/Application.php', function ($content) use ($baseNamespace) {
+        return preg_replace('/^namespace\s+App;$/m', "namespace {$baseNamespace};", $content);
+    });
 
-// update base namespace for PSR-4 autoloading in composer.json
-replaceIfFileExists('composer.json', function ($content) use ($baseNamespace) {
+    // rename base namespace in index
+    replaceIfFileExists('public/index.php', function ($content) use ($baseNamespace) {
+        return str_replace('\\App\\Application', "\\{$baseNamespace}\\Application", $content);
+    });
+}
+
+// update composer.json (cleanup + optional namespace)
+replaceIfFileExists('composer.json', function ($content) use ($baseNamespaceEnv) {
     $composerJson = json_decode($content, true);
-    unset($composerJson['autoload']['psr-4']['App\\']);
-    $composerJson['autoload']['psr-4']["{$baseNamespace}\\"] = "src/";
 
-    // cleaning composer.json so that developpers start with a basic composer.json
+    if (!empty($baseNamespaceEnv)) {
+        $baseNamespace = studlyCaps($baseNamespaceEnv);
+        unset($composerJson['autoload']['psr-4']['App\\']);
+        $composerJson['autoload']['psr-4']["{$baseNamespace}\\"] = "src/";
+    }
+
+    // cleaning composer.json so that developers start with a basic composer.json
     unset($composerJson['scripts']);
     unset($composerJson['name']);
     unset($composerJson['description']);
